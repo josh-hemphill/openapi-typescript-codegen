@@ -1,4 +1,4 @@
-import { mkdir, readFile, remove } from 'fs-extra';
+import { readFile, remove } from 'fs-extra';
 import Handlebars from 'handlebars';
 import { resolve } from 'path';
 
@@ -42,9 +42,8 @@ export const writeClientIndexCustomTemplate = async (
 
     const indexTemplate = Handlebars.compile(await readFile(templatePath, 'utf8'));
 
-    const dir = resolve(outputPath);
+    const dir = resolve(outputPath, 'index.ts');
     await remove(dir);
-    await mkdir(dir);
 
     const templateResult = indexTemplate({
         serviceBaseUrl: client.server,

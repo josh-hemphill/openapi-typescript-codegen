@@ -47,6 +47,9 @@ const handlebarsPlugin = () => ({
     },
 });
 
+/**
+ * @type {() => import('rollup').Plugin}
+ */
 const getPlugins = () => {
     const plugins = [
         nodeResolve(),
@@ -64,13 +67,18 @@ const getPlugins = () => {
     return [...plugins, terser()];
 };
 
-export default {
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const config = {
     input: './src/index.ts',
     output: {
         exports: 'named',
         file: './dist/index.js',
         format: 'cjs',
+        sourcemap: true,
     },
     external: ['camelcase', 'commander', 'fs-extra', 'handlebars', 'json-schema-ref-parser'],
     plugins: getPlugins(),
 };
+export default config;

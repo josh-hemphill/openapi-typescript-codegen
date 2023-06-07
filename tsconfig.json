@@ -4,11 +4,17 @@
         "target": "es2019",
         "module": "commonjs",
         "moduleResolution": "node",
-        "lib": ["es2019", "dom"],
-        "types": ["jest", "node"],
-        "declaration": false,
-        "declarationMap": false,
-        "sourceMap": false,
+        "lib": [
+            "es2019",
+            "dom"
+        ],
+        "types": [
+            "jest",
+            "node"
+        ],
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noImplicitAny": true,
@@ -17,15 +23,12 @@
         "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true
     },
-
     "files": [
         "./src/typings/hbs.d.ts"
     ],
-
     "include": [
         "./src/**/*.ts"
     ],
-
     "exclude": [
         "node_modules",
         "**/__mocks__"

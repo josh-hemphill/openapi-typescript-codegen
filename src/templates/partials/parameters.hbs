@@ -27,8 +27,8 @@
 {{else}}
 {{#notEquals noRequestBody 'true'}}
 {{{name}}}{{>isRequired}}: {{>type}}{{#if default}} = {{{default}}}{{/if}},
-{{/equals}}
-{{/equals}}
+{{/notEquals}}
+{{/notEquals}}
 {{/each}}
 {{/if}}
 {{/if}}

@@ -9,12 +9,12 @@
 {{#ifdef description deprecated}}
 /**
 {{#if description}}
- * {{{escapeComment description}}}
+* {{{escapeComment description}}}
 {{/if}}
 {{#if deprecated}}
- * @deprecated
+* @deprecated
 {{/if}}
- */
+*/
 {{/ifdef}}
 {{{name}}}{{>isRequired}}: {{>type}},
 {{/each}}
@@ -22,7 +22,13 @@
 {{~else}}
 
 {{#each parameters}}
+{{#notEquals name 'requestBody'}}
 {{{name}}}{{>isRequired}}: {{>type}}{{#if default}} = {{{default}}}{{/if}},
+{{else}}
+{{#notEquals noRequestBody 'true'}}
+{{{name}}}{{>isRequired}}: {{>type}}{{#if default}} = {{{default}}}{{/if}},
+{{/equals}}
+{{/equals}}
 {{/each}}
 {{/if}}
 {{/if}}

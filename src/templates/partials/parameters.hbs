@@ -2,10 +2,17 @@
 {{#if @root.useOptions~}}
 {
 {{#each parameters}}
+{{#notEquals name 'requestBody'}}
 {{{name}}}{{#if default}} = {{{default}}}{{/if}},
+{{else}}
+{{#notEquals noRequestBody 'true'}}
+{{{name}}}{{#if default}} = {{{default}}}{{/if}},
+{{/notEquals}}
+{{/notEquals}}
 {{/each}}
 }: {
 {{#each parameters}}
+{{#notEquals name 'requestBody'}}
 {{#ifdef description deprecated}}
 /**
 {{#if description}}
@@ -17,6 +24,20 @@
 */
 {{/ifdef}}
 {{{name}}}{{>isRequired}}: {{>type}},
+{{else}}
+{{#notEquals noRequestBody 'true'}}
+{{#ifdef description deprecated}}
+/**
+{{#if description}}
+* {{{escapeComment description}}}
+{{/if}}
+{{#if deprecated}}
+* @deprecated
+{{/if}}
+*/
+{{/ifdef}}
+{{/notEquals}}
+{{/notEquals}}
 {{/each}}
 }
 {{~else}}
